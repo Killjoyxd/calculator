@@ -166,3 +166,31 @@ button:hover {
 #equal:hover {
   background: var(--Red-600);
 }
+@media (max-height: 560px) {
+  body {
+    align-items: flex-start;
+  }
+  main {
+    width: min(540px, 100%);
+    padding-block: 10px;
+  }
+  .calc-title {
+    margin-bottom: 10px;
+  }
+  .calc-body {
+    gap: 8px;
+    padding: 12px 20px;
+  }
+  .box,
+  .box1 {
+    gap: 10px;
+  }
+  .input {
+    height: 56px;
+    font-size: 32px;
+  }
+  button {
+    height: 40px;
+    font-size: 22px;
+  }
+}
