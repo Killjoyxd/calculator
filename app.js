@@ -59,9 +59,10 @@ nine.addEventListener("click", () => {
 });
 
 dot.addEventListener("click", () => {
-  if (input.value === "") {
+  const dotNumber = input.value.split(/[+\-x/]/).pop();
+  if (dotNumber === "") {
     input.value = "0.";
-  } else if (!input.value.includes(".")) {
+  } else if (!dotNumber.includes(".")) {
     input.value += ".";
   }
 });
@@ -73,32 +74,63 @@ reset.addEventListener("click", () => {
 });
 
 plus.addEventListener("click", () => {
-  if (input.value !== "") {
+  if (input.value !== "" && input.value.slice(-1) !== "+") {
     input.value += "+";
   }
 });
 minus.addEventListener("click", () => {
-  if (input.value !== "") {
+  if (input.value !== "" && input.value.slice(-1) !== "-") {
     input.value += "-";
   }
 });
 multiply.addEventListener("click", () => {
-  if (input.value !== "") {
+  if (input.value !== "" && input.value.slice(-1) !== "x") {
     input.value += "x";
   }
 });
 slash.addEventListener("click", () => {
-  if (input.value !== "") {
+  if (input.value !== "" && input.value.slice(-1) !== "/") {
     input.value += "/";
   }
 });
-
 function calculate() {
   let calc;
   calc = input.value;
-  calc = calc.replace("x", "*");
+  calc = calc.replace(/x/g, "*");
   let result = eval(calc);
   input.value = result;
 }
 
 equal.addEventListener("click", calculate);
+
+const keyMap = {
+  0: zero,
+  1: one,
+  2: two,
+  3: three,
+  4: four,
+  5: five,
+  6: six,
+  7: seven,
+  8: eight,
+  9: nine,
+  ".": dot,
+  "+": plus,
+  "-": minus,
+  "*": multiply,
+  x: multiply,
+  X: multiply,
+  "/": slash,
+  Enter: equal,
+  "=": equal,
+  Backspace: del,
+  Delete: reset,
+  Escape: reset,
+};
+document.addEventListener("keydown", (e) => {
+  e.preventDefault();
+  const btn = keyMap[e.key];
+  if (!btn) return;
+
+  btn.click();
+});

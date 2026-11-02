@@ -96,6 +96,7 @@ body {
   font-family: "League Spartan", sans-serif;
   font-weight: var(--fw);
   font-size: var(--Font);
+  overflow-x: hidden;
 }
 main {
   width: 540px;
