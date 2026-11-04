@@ -18,12 +18,7 @@ const minus = document.getElementById("minus");
 const multiply = document.getElementById("multiply");
 const slash = document.getElementById("slash");
 
-const input = document.querySelector(".input");
-console.log("input:", input.value);
-
-input.addEventListener("input", () => {
-  console.log("input:", input.value);
-});
+let input = document.querySelector(".input");
 
 const dot = document.getElementById("dot");
 
@@ -61,7 +56,7 @@ nine.addEventListener("click", () => {
 dot.addEventListener("click", () => {
   const dotNumber = input.value.split(/[+\-x/]/).pop();
   if (dotNumber === "") {
-    input.value = "0.";
+    input.value += "0.";
   } else if (!dotNumber.includes(".")) {
     input.value += ".";
   }
@@ -98,10 +93,22 @@ function calculate() {
   calc = input.value;
   calc = calc.replace(/x/g, "*");
   let result = eval(calc);
-  input.value = result;
+  if (result === Infinity || result === -Infinity || isNaN(result)) {
+    input.value = "Error";
+  } else {
+    input.value = result.toLocaleString();
+  }
 }
 
 equal.addEventListener("click", calculate);
+
+function clearError() {
+  if (input.value === "Error") {
+    input.value = "";
+  }
+}
+
+document.addEventListener("click", clearError, true);
 
 const keyMap = {
   0: zero,
@@ -134,3 +141,5 @@ document.addEventListener("keydown", (e) => {
 
   btn.click();
 });
+
+

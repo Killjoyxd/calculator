@@ -96,12 +96,12 @@ body {
   font-family: "League Spartan", sans-serif;
   font-weight: var(--fw);
   font-size: var(--Font);
-  overflow-x: hidden;
+  /* overflow-y: hidden; */
 }
 main {
   width: 540px;
   max-width: 100%;
-  padding: 24px;
+  /* padding: 24px; */
 }
 .calc-title {
   margin-bottom: 24px;
@@ -166,3 +166,23 @@ button:hover {
 #equal:hover {
   background: var(--Red-600);
 }
+/* .calc-header {
+  border: 1px solid red;
+  display: flex;
+  color: white;
+}
+.calc-logo {
+}
+.theme-switch {
+  border: 1px solid red;
+  display: flex;
+  color: white;
+}
+.theme-switch {
+}
+.theme-label {
+}
+.theme-btn {
+}
+.theme-btns {
+} */
